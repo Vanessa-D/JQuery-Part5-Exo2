@@ -1,45 +1,35 @@
 $(function(){
-    // On récupère dans des variables des notes random de 0 à 20 pour chaque input
-    let randomNote1 = Math.floor(Math.random()*21);
-    let randomNote2 = Math.floor(Math.random()*21);
-    let randomNote3 = Math.floor(Math.random()*21);
-    let randomNote4 = Math.floor(Math.random()*21);
-    let randomNote5 = Math.floor(Math.random()*21);
-      
-    //Au clic du bouton qui génère les notes, on affiche les valeurs random dans chaque input
-    $('#randomNote').click(function(){
-        $('#note1').val(randomNote1);
-        $('#note2').val(randomNote2);
-        $('#note3').val(randomNote3);
-        $('#note4').val(randomNote4);
-        $('#note5').val(randomNote5);
+    // Variable qui devient objet --> contient la liste des input .note
+    let notes = $('.note');
 
-        // Et on génère un nouveau random pour chaque input en attendant le prochain clic
-        randomNote1 = Math.floor(Math.random()*21);
-        randomNote2 = Math.floor(Math.random()*21);
-        randomNote3 = Math.floor(Math.random()*21);
-        randomNote4 = Math.floor(Math.random()*21);
-        randomNote5 = Math.floor(Math.random()*21);
+    // Au clic du bouton qui génère les notes, tant que l'objet notes contient des éléments .note -->
+    // on affiche des valeurs random de 0 à 20 dans chaque input
+    $('#randomNote').click(function(){
+        for(let i = 0; i < notes.length; i++){
+            $(notes[i]).val(Math.floor(Math.random()*21));
+        }
     });
 
     // Au clic du bouton qui calcule la moyenne des notes affichées dans les input...
     $('#average').click(function(){
-        // Variable qui devient objet --> contient la liste des input .note
-        let notes = $('.note');
-        // Initialisation de la somme à 1
+        // Initialisation de la somme à 0
         let sum = 0;
-        
         // Tant que l'objet notes contient des éléments .note
         for(let i = 0; i < notes.length; i++){
-            // Variable qui récupère la valeur saisie dans chaque input
+            // Variable qui récupère la valeur saisie dans chaque input et la passe en Number
             let note = Number(notes[i].value);
-            // Si les valeurs sont affichées OU si elles sont égales à 0
-            if(note || note == 0){
+            // variable qui récupère la valeur saisie dans chaque input et c'est tout
+            let inputValue = $(notes[i]).val();
+            console.log(`Valeur passée en Number : ${note}`);
+            console.log(`Valeur saisie : ${inputValue}`);
+            // Si les valeurs des input existent ET si elles sont comprises ente 0 et 20
+            if(inputValue && inputValue<=20 && inputValue>=0){
                 // Calcul de la sommme des notes
                 sum += note;
             }else{
                 alert('Donne-moi des notes !');
-                return false; // Si on entre dans le else --> la fonction ne checkera pas ce qui suit
+                // Si on entre dans le else --> la fonction s'arrête là et ne checkera pas ce qui suit
+                return false; 
             }
         }
         // Variable qui permet le calcul de la moyenne + alerte qui l'affiche
