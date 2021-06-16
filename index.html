@@ -7,25 +7,26 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
     <title>Exercice 2 - JQuery</title>
 </head>
-<body>
-    <p>Créer une fonction qui calcule la moyenne de cinq notes sur 20</p>
+<body style="background-color: #c89c7d;">
     <div class="container mt-5">
         <form class="form-inline justify-content-center text-center">
-            <div>
+            <div class="mt-md-5">
                 <input class="note mb-1 form-control" id="note1" type="number">
                 <input class="note mb-1 form-control" id="note2" type="number">
                 <input class="note mb-1 form-control" id="note3" type="number">
                 <input class="note mb-1 form-control" id="note4" type="number">
                 <input class="note mb-1 form-control" id="note5" type="number">
             </div>
-            <button id="randomNote" type="button" class="btn btn-light mt-2">Génère des notes !</button>
-            <button id="average" type="button" class="btn btn-light mt-2">Calcule la moyenne !</button>  
+            <div class="mt-2">
+                <button id="randomNote" type="button" class="btn btn-light mt-2 mr-2 mx-auto mx-md-0">Génère des notes !</button>
+                <button id="average" type="button" class="btn btn-light mt-2 mr-2 mx-auto mx-md-2">Calcule la moyenne !</button>
+                <button id="resetButton" type="button" class="btn btn-light mt-2">Recommence !</button>
+            </div>
         </form>
-        <div class="text-center">
+        <div class="text-center mt-md-3">
             <p id="message" class="font-weight-bold" style="font-size: 2em;"></p>
         </div>
     </div>
-
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script type="text/javascript" src="script.js"></script>
 </body>

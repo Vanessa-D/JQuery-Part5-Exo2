@@ -8,6 +8,8 @@ $(function(){
         for(let i = 0; i < notes.length; i++){
             $(notes[i]).val(Math.floor(Math.random()*21));
         }
+        // On change le contenu de l'id message en rien
+        $('#message').text('');
     });
 
     // Au clic du bouton qui calcule la moyenne des notes affichées dans les input...
@@ -22,19 +24,29 @@ $(function(){
             let inputValue = $(notes[i]).val();
             console.log(`Valeur passée en Number : ${note}`);
             console.log(`Valeur saisie : ${inputValue}`);
-            // Si les valeurs des input existent ET si elles sont comprises ente 0 et 20
+            // SI les valeurs des input existent ET si elles sont comprises ente 0 et 20
             if(inputValue && inputValue<=20 && inputValue>=0){
                 // Calcul de la sommme des notes
                 sum += note;
             }else{
-                alert('Donne-moi des notes !');
-                // Si on entre dans le else --> la fonction s'arrête là et ne checkera pas ce qui suit
+                $('#message').text('Donne-moi des notes !');
+                // SI on entre dans le else --> la fonction s'arrête là et ne checkera pas ce qui suit
                 return false; 
             }
         }
         // Variable qui permet le calcul de la moyenne + alerte qui l'affiche
         let average = (sum/notes.length);
-        alert(average);
+        $('#message').text(average);
+    });
+
+    // Au clic du bouton resetButton...
+    $('#resetButton').click(function(){
+        for(let i = 0; i < notes.length; i++){
+            // On affiche une valeur vide
+            $(notes[i]).val('');
+            // On change le contenu de l'id message en rien
+            $('#message').text('');
+        }
     });
 });
 
